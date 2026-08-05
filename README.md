@@ -81,10 +81,10 @@ Deploy early - don't leave hosting for the last hour.
 
 ## Grading
 
-| Area | Weight |
-| --- | --- |
-| Cart Context (sidebar, add/remove, checkout flow) | 35% |
-| Routing + pages | 25% |
-| Data loading, pagination, folder structure & code quality | 20% |
-| Hosted, working, submitted correctly | 20% |
-| Bonus (favorites) | up to +10% |
+| Area                                                      | Weight     |
+| --------------------------------------------------------- | ---------- |
+| Cart Context (sidebar, add/remove, checkout flow)         | 35%        |
+| Routing + pages                                           | 25%        |
+| Data loading, pagination, folder structure & code quality | 20%        |
+| Hosted, working, submitted correctly                      | 20%        |
+| Bonus (favorites)                                         | up to +10% |
