@@ -1,7 +1,25 @@
+import { Route, Routes } from 'react-router-dom'
+
+import Layout from './components/layout/Layout'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
+import Home from './pages/Home'
+import ItemDetail from './pages/ItemDetail'
+import Items from './pages/Items'
+import NotFound from './pages/NotFound'
+import { PATHS } from './routes/paths'
+
 export default function App() {
   return (
-    <div className="flex min-h-screen items-center justify-center">
-      <h1 className="text-4xl font-bold text-amber-800">Cafe App</h1>
-    </div>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path={PATHS.home} element={<Home />} />
+        <Route path={PATHS.items} element={<Items />} />
+        <Route path="/items/:id" element={<ItemDetail />} />
+        <Route path={PATHS.cart} element={<Cart />} />
+        <Route path={PATHS.checkout} element={<Checkout />} />
+        <Route path="*" element={<NotFound />} />
+      </Route>
+    </Routes>
   )
 }
