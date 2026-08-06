@@ -14,8 +14,10 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path={PATHS.home} element={<Home />} />
-        <Route path={PATHS.items} element={<Items />} />
-        <Route path="/items/:id" element={<ItemDetail />} />
+        <Route path={PATHS.items}>
+          <Route index element={<Items />} />
+          <Route path=":id" element={<ItemDetail />} />
+        </Route>
         <Route path={PATHS.cart} element={<Cart />} />
         <Route path={PATHS.checkout} element={<Checkout />} />
         <Route path="*" element={<NotFound />} />

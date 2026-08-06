@@ -8,14 +8,14 @@ import { PATHS } from '../../routes/paths'
 import NavDrawer from './NavDrawer'
 
 export default function Header() {
-  const { totalCount } = useCart()
   const [isNavOpen, setIsNavOpen] = useState(false)
+  const { totalCount } = useCart()
 
   return (
     <>
       <header className="hidden items-center justify-between px-10 py-6 sp:flex">
         <Link to={PATHS.home}>
-          <img src={logo} alt="Cafe" className="h-8 w-auto" />
+          <img src={logo} alt="Cafe" className="h-6 w-auto" />
         </Link>
 
         <Link to={PATHS.cart} className="flex items-center gap-2" aria-label="Cart">
@@ -32,7 +32,7 @@ export default function Header() {
         <div className="flex items-center gap-5">
           <Link to={PATHS.cart} className="flex items-center gap-1.5" aria-label="Cart">
             <ShoppingCart size={20} strokeWidth={1.5} />
-            <span className="text-xs text-muted">0</span>
+            <span className="text-xs text-muted">{totalCount}</span>
           </Link>
 
           <button onClick={() => setIsNavOpen(true)} aria-label="Open menu">
