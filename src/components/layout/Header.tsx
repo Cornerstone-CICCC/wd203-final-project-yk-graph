@@ -3,10 +3,12 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import logo from '../../assets/logo_white.webp'
+import { useCart } from '../../hooks/useCart'
 import { PATHS } from '../../routes/paths'
 import NavDrawer from './NavDrawer'
 
 export default function Header() {
+  const { totalCount } = useCart()
   const [isNavOpen, setIsNavOpen] = useState(false)
 
   return (
@@ -18,7 +20,7 @@ export default function Header() {
 
         <Link to={PATHS.cart} className="flex items-center gap-2" aria-label="Cart">
           <ShoppingCart size={22} strokeWidth={1.5} />
-          <span className="text-xs text-muted">0</span>
+          <span className="text-xs text-muted">{totalCount}</span>
         </Link>
       </header>
 
