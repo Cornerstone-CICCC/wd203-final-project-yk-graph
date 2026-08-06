@@ -1,4 +1,4 @@
-import { ChevronUp } from 'lucide-react'
+import { CircleChevronUp } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { PATHS } from '../../routes/paths'
@@ -26,10 +26,10 @@ export default function Sidebar() {
 
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="mt-auto flex items-center gap-2 text-xs tracking-wider text-muted hover:text-paper"
+        className="flex items-center gap-2 text-xs tracking-wider text-muted hover:text-paper"
       >
         BACK TO TOP
-        <ChevronUp size={16} strokeWidth={1.5} />
+        <CircleChevronUp size={18} strokeWidth={1.2} />
       </button>
     </aside>
   )
