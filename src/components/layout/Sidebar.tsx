@@ -2,6 +2,7 @@ import { CircleChevronUp } from 'lucide-react'
 import { NavLink } from 'react-router-dom'
 
 import { PATHS } from '../../routes/paths'
+import SidebarCart from '../cart/SidebarCart'
 
 const NAV_ITEMS = [
   { to: PATHS.items, label: 'MENU' },
@@ -11,8 +12,8 @@ const NAV_ITEMS = [
 
 export default function Sidebar() {
   return (
-    <aside className="sticky top-0 z-20 min-w-70 hidden h-screen shrink-0 grow-0 basis-[18.75%] flex-col justify-between p-12 pt-8 sp:flex">
-      <nav className="flex flex-col gap-4 text-xs tracking-wide">
+    <aside className="sticky top-0 z-20 hidden h-screen min-w-70 shrink-0 grow-0 basis-[18.75%] flex-col p-12 pt-8 sp:flex">
+      <nav className="flex shrink-0 flex-col gap-4 text-xs tracking-wide">
         {NAV_ITEMS.map((item) => (
           <NavLink
             key={item.to}
@@ -24,9 +25,11 @@ export default function Sidebar() {
         ))}
       </nav>
 
+      <SidebarCart />
+
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="flex items-center gap-2 text-xs tracking-wider text-muted hover:text-paper"
+        className="flex shrink-0 items-center gap-2 text-xs tracking-wider text-muted transition-colors hover:text-paper"
       >
         BACK TO TOP
         <CircleChevronUp size={18} strokeWidth={1.2} />
