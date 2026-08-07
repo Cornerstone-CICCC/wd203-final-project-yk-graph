@@ -27,7 +27,7 @@ export default function Items() {
   }
 
   return (
-    <div className="px-6 py-12 sp:px-12 sp:py-20">
+    <div className="px-6 py-12 sp:px-12">
       <header className="mb-12">
         <h1 className="text-2xl tracking-wide">MENU</h1>
         <p className="mt-2 text-xs text-muted">{products.length} items</p>
