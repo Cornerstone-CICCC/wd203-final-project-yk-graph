@@ -36,7 +36,7 @@ export default function CartItemRow({ product, quantity, onNavigate }: Props) {
         >
           {product.name}
         </Link>
-        <p className="text-[10px] text-muted">
+        <p className="text-xxs text-muted">
           ${Number(product.price).toFixed(2)} × {quantity}
         </p>
       </div>

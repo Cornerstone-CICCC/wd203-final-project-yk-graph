@@ -35,7 +35,7 @@ export default function SidebarCart({ onNavigate }: Props) {
         <Link
           to={PATHS.cart}
           onClick={onNavigate}
-          className="block border border-paper py-2 text-center text-[10px] tracking-widest transition-colors hover:bg-paper hover:text-ink"
+          className="block border border-paper py-2 text-center text-xxs tracking-widest transition-colors hover:bg-paper hover:text-ink"
         >
           VIEW CART
         </Link>
