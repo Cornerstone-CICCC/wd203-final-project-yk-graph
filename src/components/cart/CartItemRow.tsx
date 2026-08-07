@@ -8,15 +8,16 @@ import type { Product } from '../../types/product'
 type Props = {
   product: Product
   quantity: number
+  onNavigate?: () => void
 }
 
-export default function CartItemRow({ product, quantity }: Props) {
+export default function CartItemRow({ product, quantity, onNavigate }: Props) {
   const { removeFromCart } = useCart()
   const subtotal = Number(product.price) * quantity
 
   return (
     <li className="flex items-center gap-3">
-      <Link to={PATHS.itemDetail(product.id)} className="shrink-0">
+      <Link to={PATHS.itemDetail(product.id)} onClick={onNavigate} className="shrink-0">
         <img
           src={product.photo}
           alt={product.name}
@@ -28,7 +29,11 @@ export default function CartItemRow({ product, quantity }: Props) {
       </Link>
 
       <div className="min-w-0 flex-1">
-        <Link to={PATHS.itemDetail(product.id)} className="block truncate text-xs hover:opacity-60">
+        <Link
+          to={PATHS.itemDetail(product.id)}
+          onClick={onNavigate}
+          className="block truncate text-xs hover:opacity-60"
+        >
           {product.name}
         </Link>
         <p className="text-[10px] text-muted">

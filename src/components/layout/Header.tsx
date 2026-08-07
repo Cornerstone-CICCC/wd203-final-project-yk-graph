@@ -19,7 +19,7 @@ export default function Header() {
         </Link>
 
         <Link to={PATHS.cart} className="flex items-center gap-2" aria-label="Cart">
-          <ShoppingCart size={22} strokeWidth={1.5} />
+          <ShoppingCart size={24} strokeWidth={1.5} />
           <span className="text-xs text-muted">{totalCount}</span>
         </Link>
       </header>
@@ -31,12 +31,12 @@ export default function Header() {
 
         <div className="flex items-center gap-5">
           <Link to={PATHS.cart} className="flex items-center gap-1.5" aria-label="Cart">
-            <ShoppingCart size={20} strokeWidth={1.5} />
+            <ShoppingCart size={24} strokeWidth={1.5} />
             <span className="text-xs text-muted">{totalCount}</span>
           </Link>
 
           <button onClick={() => setIsNavOpen(true)} aria-label="Open menu">
-            <Menu size={22} strokeWidth={1.5} />
+            <Menu size={24} strokeWidth={1.5} />
           </button>
         </div>
       </header>
