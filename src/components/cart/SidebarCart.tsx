@@ -5,7 +5,11 @@ import { useCartProducts } from '../../hooks/useCartProducts'
 import { PATHS } from '../../routes/paths'
 import CartItemRow from './CartItemRow'
 
-export default function SidebarCart() {
+type Props = {
+  onNavigate?: () => void
+}
+
+export default function SidebarCart({ onNavigate }: Props) {
   const { totalPrice, totalCount } = useCart()
   const cartProducts = useCartProducts()
 
@@ -30,7 +34,8 @@ export default function SidebarCart() {
         </div>
         <Link
           to={PATHS.cart}
-          className="block border border-paper py-2 text-center text-[10px] tracking-widest transition-colors hover:bg-paper hover:text-ink"
+          onClick={onNavigate}
+          className="block border border-paper py-2 text-center text-xxs tracking-widest transition-colors hover:bg-paper hover:text-ink"
         >
           VIEW CART
         </Link>
