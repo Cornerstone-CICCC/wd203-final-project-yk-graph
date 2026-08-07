@@ -1,44 +1,47 @@
-import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 
-import type { Product } from '../types/product'
+import Pagination from '../components/product/Pagination'
+import ProductCard from '../components/product/ProductCard'
+import { useProducts } from '../hooks/useProducts'
+
+const ITEMS_PER_PAGE = 8
 
 export default function Items() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [isLoading, setIsLoading] = useState(true)
-  const [error, setError] = useState<string | null>(null)
+  const { products, isLoading, error } = useProducts()
+  const [searchParams, setSearchParams] = useSearchParams()
 
-  useEffect(() => {
-    const loadProducts = async () => {
-      try {
-        const res = await fetch('/products.json')
-        if (!res.ok) throw new Error(`Failed to fetch: ${res.status}`)
-        const data = await res.json()
-        setProducts(data.products)
-      } catch (e) {
-        setError(e instanceof Error ? e.message : 'Unknown error')
-      } finally {
-        setIsLoading(false)
-      }
-    }
+  if (isLoading) return <p className="p-8 text-sm text-muted">Loading...</p>
+  if (error) return <p className="p-8 text-sm text-red-500">{error}</p>
 
-    loadProducts()
-  }, [])
+  const totalPages = Math.ceil(products.length / ITEMS_PER_PAGE)
 
-  if (isLoading) return <p className="p-8">Loading...</p>
-  if (error) return <p className="p-8 text-red-600">{error}</p>
+  const rawPage = Number(searchParams.get('page'))
+  const currentPage = Number.isInteger(rawPage) && rawPage >= 1 && rawPage <= totalPages ? rawPage : 1
+
+  const start = (currentPage - 1) * ITEMS_PER_PAGE
+  const visibleProducts = products.slice(start, start + ITEMS_PER_PAGE)
+
+  const handlePageChange = (page: number) => {
+    setSearchParams({ page: String(page) })
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
 
   return (
-    <div className="p-8">
-      <h1 className="mb-6 text-3xl font-bold">Menu</h1>
-      <p className="mb-4 text-sm text-gray-500">{products.length} items</p>
-      <ul className="grid grid-cols-2 gap-6 md:grid-cols-4">
-        {products.map((product) => (
-          <li key={product.id} className="border p-4">
-            <p className="font-bold">{product.name}</p>
-            <p>${Number(product.price).toFixed(2)}</p>
+    <div className="px-6 py-12 sp:px-12 sp:py-20">
+      <header className="mb-12">
+        <h1 className="text-2xl tracking-wide">MENU</h1>
+        <p className="mt-2 text-xs text-muted">{products.length} items</p>
+      </header>
+
+      <ul className="grid grid-cols-2 gap-x-6 gap-y-12 sp:grid-cols-4 sp:gap-x-8">
+        {visibleProducts.map((product) => (
+          <li key={product.id}>
+            <ProductCard product={product} />
           </li>
         ))}
       </ul>
+
+      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
     </div>
   )
 }
