@@ -5,7 +5,7 @@ import type { Location } from '../../data/locations'
 
 export default function LocationSection({ location }: { location: Location }) {
   return (
-    <section className="py-4 sp:py-8">
+    <section id={location.id} className="py-4 sp:py-8">
       <div className="grid grid-cols-3 gap-4 sp:gap-6">
         {location.photos.map((photo, index) => (
           <div key={index} className="aspect-3/4 overflow-hidden bg-line">
