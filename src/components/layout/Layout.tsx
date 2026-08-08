@@ -9,7 +9,7 @@ export default function Layout() {
     <div className="sp:flex">
       <Sidebar />
 
-      <div className="flex min-h-screen flex-1 flex-col">
+      <div className="flex min-h-screen min-w-0 flex-1 flex-col">
         <Header />
         <main className="flex-1 pt-14 sp:pt-0">
           <Outlet />

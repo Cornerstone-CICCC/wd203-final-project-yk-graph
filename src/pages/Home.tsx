@@ -1,3 +1,13 @@
+import AboutSection from '../components/home/AboutSection'
+import Hero from '../components/home/Hero'
+import LocationMarquee from '../components/home/LocationMarquee'
+
 export default function Home() {
-  return <h1 className="p-8 text-3xl">Home</h1>
+  return (
+    <>
+      <Hero />
+      <LocationMarquee />
+      <AboutSection />
+    </>
+  )
 }
